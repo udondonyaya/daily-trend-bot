@@ -11,10 +11,16 @@ TELEGRAM_CHAT_ID = os.environ.get("-1004476999580")
 
 def generate_ai_content():
     try:
-        # 初始化阿里雲百煉 Client（相容 OpenAI 規格）
+        if not DASHSCOPE_API_KEY:
+            print(
+                "❌ 錯誤：找不到 DASHSCOPE_API_KEY，請檢查 GitHub Secrets 設定！"
+            )
+            return None
+
+        # 使用您業務空間專屬的 OpenAI Compatible 端點
         client = OpenAI(
             api_key=DASHSCOPE_API_KEY,
-            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+            base_url="https://ws-uv1jp3fuwnjpgir2.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
         )
 
         today_str = datetime.date.today().strftime("%Y-%m-%d")
@@ -38,9 +44,9 @@ def generate_ai_content():
         💡 *小編總結/抽水/使用建議*
         """
 
-        print("🤖 正在呼叫阿里雲通義千問 API...")
+        print("🤖 正在呼叫阿里雲百煉 (業務空間) API...")
         response = client.chat.completions.create(
-            model="qwen-plus",  # 可選: qwen-plus, qwen-max, qwen-turbo
+            model="qwen-plus",
             messages=[{"role": "user", "content": prompt}],
         )
         return response.choices[0].message.content
