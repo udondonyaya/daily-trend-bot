@@ -4,9 +4,9 @@ import requests
 from openai import OpenAI
 
 # 讀取 GitHub Secret
-DASHSCOPE_API_KEY = os.environ.get("DASHSCOPE_API_KEY")
-TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
+DASHSCOPE_API_KEY = os.environ.get("sk-ws-H.DHXPRYE.jbwD.MEQCIEYJ7acZVTQ7rm4l9d9hCI8VBxleaZE9UoujAKbpMJGTAiANZZTU-uc2UeWsMjLITWmQZTDLp1xCwFtbWyGJKqJQjg")
+TELEGRAM_BOT_TOKEN = os.environ.get("8541325010:AAEgemRXnx6JAgzqEJ47wGTYsgQduSRZGVI")
+TELEGRAM_CHAT_ID = os.environ.get("-1004476999580")
 
 
 def generate_ai_content():
